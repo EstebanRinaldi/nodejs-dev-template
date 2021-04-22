@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-app",
+  "version": "0.1.0",
+  "description": "app description",
+  "main": "main.js",
+  "author": "Esteban Rinaldi",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "14.16.0"
+  },
+  "scripts": {
+    "start": "node ./main.js",
+    "dev": "nodemon ./main.js",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^26.0.22",
+    "eslint": "^7.24.0",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^26.6.3"
+  }
+}
