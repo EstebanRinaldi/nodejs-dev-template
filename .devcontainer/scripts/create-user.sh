@@ -27,11 +27,11 @@ export DEBIAN_FRONTEND=noninteractive
 # Create or update a non-root user to match UID/GID.
 if id -u ${USERNAME} > /dev/null 2>&1; then
     # User exists, update if needed
-    if [ "$USER_GID" != "$(id -G $USERNAME)" ]; then 
-        groupmod --gid $USER_GID $USERNAME 
+    if [ "$USER_GID" != "$(id -G $USERNAME)" ]; then
+        groupmod --gid $USER_GID $USERNAME
         usermod --gid $USER_GID $USERNAME
     fi
-    if [ "$USER_UID" != "$(id -u $USERNAME)" ]; then 
+    if [ "$USER_UID" != "$(id -u $USERNAME)" ]; then
         usermod --uid $USER_UID $USERNAME
     fi
 else
@@ -40,8 +40,5 @@ else
     useradd -o -s /bin/sh --uid $USER_UID --gid $USER_GID -m $USERNAME
 fi
 
-# Add add sudo support for non-root user
-# apt-get install sudo -y --no-install-recommends 
-sh $(dirname "$0")/apt-install.sh sudo
-echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
-chmod 0440 /etc/sudoers.d/$USERNAME
+# Installs and add sudo support for non-root user
+sh $(dirname "$0")/add-sudo-support.sh $USERNAME

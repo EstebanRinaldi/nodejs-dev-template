@@ -17,8 +17,8 @@ services:
             - NODE_ENV=${ENVIRONMENT}
         #     - DEV_PORT=${PORT}
         #     - PROD_PORT=3000
-        # volumes:
-        #     - ./src:/src
+        volumes:
+            - ..:/workspace
         restart: unless-stopped
         # Disabled for development.
         # ports:

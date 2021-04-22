@@ -1,0 +1,48 @@
+{
+  "name": "NodeJS Development Environment",
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "nodejs",
+  "workspaceFolder": "/workspace",
+
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "js/ts.implicitProjectConfig.checkJs": true,
+  },
+
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
+    "mtxr.sqltools-driver-mysql",
+    "mtxr.sqltools-driver-mssql",
+    "ms-mssql.mssql",
+    "mikestead.dotenv",
+    "CoenraadS.bracket-pair-colorizer-2",
+    "aaron-bond.better-comments",
+    "christian-kohler.path-intellisense",
+    "yzhang.markdown-all-in-one",
+    "bierner.markdown-preview-github-styles",
+    "EditorConfig.EditorConfig",
+    "oouo-diogo-perdigao.docthis",
+    "Orta.vscode-jest"
+  ],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [3000],
+
+	// Use 'portsAttributes' to set default properties for specific forwarded ports. More info: https://code.visualstudio.com/docs/remote/devcontainerjson-reference.
+	"portsAttributes": {
+    "3000": {
+      "label": "Server Default",
+      "onAutoForward": "notify"
+    }
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn dev",
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	//"remoteUser": "user-name-goes-here"
+}

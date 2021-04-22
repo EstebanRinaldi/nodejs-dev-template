@@ -12,11 +12,13 @@ RUN chmod +x /scripts/*
 # Install apt-utils
 RUN /scripts/apt-install.sh "apt-utils"
 
-# # Create non-root user.
-# ARG USERNAME=node
-# ARG USER_UID=1000
-# ARG USER_GID=$USER_UID
-# RUN /scripts/create-user.sh "${USERNAME}" "${USER_UID}" "${USER_GID}"
+# Non-root user.
+ARG USERNAME=node
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+# Create non-root user if required and install sudo.
+RUN /scripts/create-user.sh "${USERNAME}" "${USER_UID}" "${USER_GID}"
 
 # Set timezone
 ARG TIMEZONE
@@ -65,6 +67,6 @@ RUN su ${USERNAME} -c "umask 0002 && npm install -g nodemon ${EXTRA_MODULES}" \
 USER ${USERNAME}
 
 # Sets the source code dir as working dir.
-WORKDIR /workspace
+# WORKDIR /workspace
 
-EXPOSE 3000
+# EXPOSE 3000
