@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+
+    nodejs:
+        env_file:
+            - ../.env
+        build:
+            context: .
+            args:
+                VARIANT: ${NODEJS_VARIANT}
+                ADDITIONAL_LOCALES: ${ADDITIONAL_LOCALES}
+                LOCALE: ${DFLT_LOCALE}
+                TIMEZONE: ${DFLT_TIMEZONE}
+        hostname: ${HOST}
+        environment:
+            - NODE_ENV=${ENVIRONMENT}
+        #     - DEV_PORT=${PORT}
+        #     - PROD_PORT=3000
+        # volumes:
+        #     - ./src:/src
+        restart: unless-stopped
+        # Disabled for development.
+        # ports:
+        #     - ${PORT}:3000
+        # Command to stay alive for coding.
+        command: sleep infinity
+        # Command to run the server.
+        # command: "node ${NODEJS_SERVER_FILE}"
+        container_name: ${HOST}
