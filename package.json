@@ -1,7 +1,7 @@
 {
   "name": "nodejs-app",
   "version": "0.1.0",
-  "description": "app description",
+  "description": "App description",
   "main": "main.js",
   "author": "Esteban Rinaldi",
   "license": "UNLICENSED",
