@@ -3,7 +3,7 @@ import http from 'http';
 const hostname = 'localhost';
 
 /** @type {number} */
-const port = +process.env.DEV_PORT;
+const port = 3000;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
