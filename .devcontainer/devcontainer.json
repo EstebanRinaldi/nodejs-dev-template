@@ -9,10 +9,13 @@
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "js/ts.implicitProjectConfig.checkJs": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "[javascript]": {
+      "editor.formatOnSave": true,
       "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "editor.rulers": [
+      80
+    ]
   },
   // Add the IDs of extensions you want installed when the container is created.
   "extensions": [
@@ -34,7 +37,10 @@
     "rangav.vscode-thunder-client",
     "xabikos.javascriptsnippets",
     "esbenp.prettier-vscode",
-    "wallabyjs.quokka-vscode"
+    "wallabyjs.quokka-vscode",
+    "eamodio.gitlens",
+    "gamunu.vscode-yarn",
+    "hediet.vscode-drawio"
   ],
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [3000],
@@ -44,7 +50,7 @@
       "label": "Server Default",
       "onAutoForward": "notify"
     }
-  },
+  }
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "yarn dev",
   // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
