@@ -63,6 +63,17 @@
         "fontWeight": "bold",
         "overviewRulerLane": "full"
       }
+    ],
+    "todohighlight.include": [
+      "**/*.md",
+      "**/*.js",
+      "**/*.jsx",
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.html",
+      "**/*.php",
+      "**/*.css",
+      "**/*.scss"
     ]
   },
   // Add the IDs of extensions you want installed when the container is created.
