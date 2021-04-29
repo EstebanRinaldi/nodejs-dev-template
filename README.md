@@ -33,7 +33,6 @@ The container includes NodeJS (ckech .env to change version), with nodemon and Y
 - "ms-mssql.mssql",
 - "mikestead.dotenv",
 - "CoenraadS.bracket-pair-colorizer-2",
-- "aaron-bond.better-comments",
 - "christian-kohler.path-intellisense",
 - "yzhang.markdown-all-in-one",
 - "bierner.markdown-preview-github-styles",
@@ -46,7 +45,11 @@ The container includes NodeJS (ckech .env to change version), with nodemon and Y
 - "wallabyjs.quokka-vscode",
 - "eamodio.gitlens",
 - "gamunu.vscode-yarn",
-- "hediet.vscode-drawio"
+- "hediet.vscode-drawio",
+
+#### TODO Highlight `wayou.vscode-todo-highlight`
+
+Highlight TODO, FIXME, HERE, DEBUG and NOTE keywords within your code.
 
 ### NodeJS Project
 
