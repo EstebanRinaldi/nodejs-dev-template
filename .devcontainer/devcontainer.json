@@ -9,10 +9,8 @@
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "js/ts.implicitProjectConfig.checkJs": true,
-    "[javascript]": {
-      "editor.formatOnSave": true,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.rulers": [
       80
     ],
@@ -23,7 +21,49 @@
       "**/CVS": true,
       "**/.DS_Store": true,
       ".devcontainer/": true
-    }
+    },
+    "todohighlight.keywords": [
+      {
+        "text": "TODO:",
+        "color": "black",
+        "backgroundColor": "#FFD700",
+        "overviewRulerColor": "#FFD700",
+        "fontWeight": "bold",
+        "overviewRulerLane": "full"
+      },
+      {
+        "text": "FIXME:",
+        "color": "black",
+        "backgroundColor": "#FF4500",
+        "overviewRulerColor": "#FF4500",
+        "fontWeight": "bold",
+        "overviewRulerLane": "full"
+      },
+      {
+        "text": "DEBUG:",
+        "color": "black",
+        "backgroundColor": "#CD853F",
+        "overviewRulerColor": "#CD853F",
+        "fontWeight": "bold",
+        "overviewRulerLane": "full"
+      },
+      {
+        "text": "NOTE:",
+        "color": "black",
+        "backgroundColor": "#6495ED",
+        "overviewRulerColor": "#6495ED",
+        "fontWeight": "bold",
+        "overviewRulerLane": "full"
+      },
+      {
+        "text": "HERE:",
+        "color": "black",
+        "backgroundColor": "#008080",
+        "overviewRulerColor": "#008080",
+        "fontWeight": "bold",
+        "overviewRulerLane": "full"
+      }
+    ]
   },
   // Add the IDs of extensions you want installed when the container is created.
   "extensions": [
@@ -35,7 +75,7 @@
     "ms-mssql.mssql",
     "mikestead.dotenv",
     "CoenraadS.bracket-pair-colorizer-2",
-    "aaron-bond.better-comments",
+    // "aaron-bond.better-comments",
     "christian-kohler.path-intellisense",
     "yzhang.markdown-all-in-one",
     "bierner.markdown-preview-github-styles",
@@ -48,7 +88,8 @@
     "wallabyjs.quokka-vscode",
     "eamodio.gitlens",
     "gamunu.vscode-yarn",
-    "hediet.vscode-drawio"
+    "hediet.vscode-drawio",
+    "wayou.vscode-todo-highlight"
   ],
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [3000],
