@@ -9,6 +9,7 @@
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "js/ts.implicitProjectConfig.checkJs": true,
+    "javascript.preferences.importModuleSpecifierEnding": "js",
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.rulers": [
