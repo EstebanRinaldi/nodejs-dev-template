@@ -13,11 +13,16 @@
   "scripts": {
     "start": "node ./main.js",
     "dev": "nodemon ./main.js",
+    "lint": "node_modules/.bin/eslint ./",
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage"
   },
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/eslint-parser": "^7.13.14",
+    "@babel/eslint-plugin": "^7.13.16",
+    "@babel/preset-env": "^7.14.0",
     "@types/jest": "^26.0.22",
     "eslint": "^7.24.0",
     "eslint-config-airbnb-base": "^14.2.1",

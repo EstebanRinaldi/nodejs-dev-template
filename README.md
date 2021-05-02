@@ -4,6 +4,9 @@ Template for NodeJS development with VSCode inside a Docker Container.
 
 ## Requirements
 
+- [Docker Engine (v20.10)](https://docs.docker.com/engine/install/)
+- [Docker Compose (v1.29)](https://docs.docker.com/compose/install/)
+
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [VS Code Remote Development Extension](https://aka.ms/vscode-remote/download/extension)
 - [VS Code Docker Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) *(optional)*
