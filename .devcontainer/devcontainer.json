@@ -1,8 +1,6 @@
 {
   "name": "NodeJS Development Environment",
-  "dockerComposeFile": [
-    "docker-compose.yml"
-  ],
+  "dockerComposeFile": ["docker-compose.yml"],
   "service": "nodejs",
   "workspaceFolder": "/workspace",
   // Set *default* container specific settings.json values on container create.
@@ -12,9 +10,7 @@
     "javascript.preferences.importModuleSpecifierEnding": "js",
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.rulers": [
-      80
-    ],
+    "editor.rulers": [80],
     "files.exclude": {
       "**/.git": true,
       "**/.svn": true,
@@ -92,7 +88,7 @@
     "yzhang.markdown-all-in-one",
     "bierner.markdown-preview-github-styles",
     "EditorConfig.EditorConfig",
-    "oouo-diogo-perdigao.docthis",
+    // "oouo-diogo-perdigao.docthis",
     "Orta.vscode-jest",
     "rangav.vscode-thunder-client",
     "xabikos.javascriptsnippets",
