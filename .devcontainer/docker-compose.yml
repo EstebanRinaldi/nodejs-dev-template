@@ -69,7 +69,11 @@ services:
     container_name: ${MYSQL_HOST}
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:${PMA_VARIANT}
+    build:
+      context: .
+      dockerfile: ./phpmyadmin/Dockerfile
+      args:
+        VARIANT: ${PMA_VARIANT}
     restart: unless-stopped
     environment:
       - PMA_ARBITRARY=1
@@ -118,8 +122,11 @@ services:
     container_name: ${POSTGRES_HOST}
 
   pgadmin:
-    # Docs: https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html
-    image: dpage/pgadmin4:${PGADMIN_VARIANT}
+    build:
+      context: .
+      dockerfile: ./pgadmin/Dockerfile
+      args:
+        VARIANT: ${PGADMIN_VARIANT}
     restart: unless-stopped
     ports:
       - ${PGADMIN_PORT}:80
