@@ -3,15 +3,26 @@
   "version": "0.1.0",
   "description": "App description",
   "main": "main.js",
-  "author": "Esteban Rinaldi",
+  "author": "Author Name",
   "license": "UNLICENSED",
   "private": true,
-  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
   "scripts": {
     "start": "node ./main.js",
-    "dev": "nodemon ./main.js"
+    "dev": "nodemon ./main.js",
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest) --coverage=false",
+    "test:coverage": "yarn node --experimental-vm-modules $(yarn bin jest) --coverage=true",
+    "test:debug": "yarn run test --runInBand"
   },
-  "dependencies": {},
+  "jest": {
+    "collectCoverage": true,
+    "testPathIgnorePatterns": [
+      "node_modules"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/eslint-parser": "^7.13.14",

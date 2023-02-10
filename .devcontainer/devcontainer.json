@@ -63,6 +63,7 @@
         "js/ts.implicitProjectConfig.checkJs": true,
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "jest.jestCommandLine": "yarn test",
         "editor.rulers": [80],
         "files.exclude": {
           "**/.git": true,
