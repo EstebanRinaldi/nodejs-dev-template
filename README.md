@@ -13,8 +13,8 @@ Template for NodeJS development with VSCode inside a Docker Container.
 
 ## Usage
 
-1. Click <Use this template>
-2. Select <Create a new repository>
+1. Click **Use this template**
+2. Select **Create a new repository**
 3. Update the .env file.
 4. Run the **Remote-Containers: Reopen in Container...** command from the Command Palette (F1) or quick actions Status bar item.
 5. Optionally update the package.json to match your project.
