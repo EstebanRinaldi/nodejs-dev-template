@@ -1,5 +1,5 @@
 ARG VARIANT=latest
-FROM mysql:${VARIANT}
+FROM mysql:${VARIANT}-debian
 
 # Copy all scripts and allow execution.
 COPY ./scripts /scripts

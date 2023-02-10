@@ -15,5 +15,9 @@ ARG ADDITIONAL_LOCALES=""
 RUN /scripts/install-locales.sh "${ADDITIONAL_LOCALES} ${LOCALE}"
 ENV LC_ALL="${LOCALE}" 
 ENV LANG="${LOCALE}"
+
+# Update local packages and cleanup.
+RUN /scripts/apt-upgrade.sh && /scripts/cleanup.sh && rm -rf /scripts
+
     
 EXPOSE 5432

@@ -16,6 +16,9 @@ RUN /scripts/install-locales.sh "${ADDITIONAL_LOCALES} ${LOCALE}"
 ENV LC_ALL="${LOCALE}" 
 ENV LANG="${LOCALE}"
 
+# Update local packages and cleanup.
+RUN /scripts/apt-upgrade.sh && /scripts/cleanup.sh && rm -rf /scripts
+
 # Copy and set permissions on configuration file.
 COPY ./mariadb/my.cnf /etc/mysql/conf.d/my.cnf
 RUN chmod 0444 /etc/mysql/conf.d/my.cnf

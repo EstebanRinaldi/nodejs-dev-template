@@ -7,15 +7,9 @@
   "license": "UNLICENSED",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": "14.16.0"
-  },
   "scripts": {
     "start": "node ./main.js",
-    "dev": "nodemon ./main.js",
-    "lint": "node_modules/.bin/eslint ./",
-    "test": "node --experimental-vm-modules node_modules/.bin/jest",
-    "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage"
+    "dev": "nodemon ./main.js"
   },
   "dependencies": {},
   "devDependencies": {

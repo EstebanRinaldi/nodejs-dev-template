@@ -1,6 +1,10 @@
-# [Choice] Node.js version: 14, 12, 10, lts, lts-buster
+# [Choice] Node.js version
+# https://github.com/nodejs/docker-node
 ARG VARIANT=lts
 FROM node:${VARIANT}
+
+# Update yarn to latest stable version
+RUN yarn set version stable
 
 # Set Environment Variables
 ENV DEBIAN_FRONTEND noninteractive
@@ -9,16 +13,14 @@ ENV DEBIAN_FRONTEND noninteractive
 COPY ./scripts /scripts
 RUN chmod +x /scripts/*
 
+# Patch if node:14
+RUN /scripts/add-node-patch.sh "${VARIANT}"
+
 # Install apt-utils
 RUN /scripts/apt-install.sh "apt-utils"
 
 # Non-root user.
 ARG USERNAME=node
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
-# Create non-root user if required and install sudo.
-RUN /scripts/create-user.sh "${USERNAME}" "${USER_UID}" "${USER_GID}"
 
 # Set timezone
 ARG TIMEZONE
@@ -31,17 +33,11 @@ RUN /scripts/install-locales.sh "${ADDITIONAL_LOCALES} ${LOCALE}"
 ENV LC_ALL="${LOCALE}"
 ENV LANG="${LOCALE}"
 
-# Remove imagemagick due to https://security-tracker.debian.org/tracker/CVE-2019-10131
-RUN apt-get purge -y imagemagick imagemagick-6-common
+# Install needed packages.
+RUN /scripts/apt-install.sh "apt-transport-https curl ca-certificates tar gnupg2"
 
-# Update local packages
-RUN /scripts/apt-upgrade.sh
-
-# Cleanup
-RUN /scripts/cleanup.sh
-
-# Install needed packages and yarn.
-RUN /scripts/apt-install.sh "apt-transport-https curl ca-certificates tar gnupg2 yarn"
+# Update local packages and cleanup.
+RUN /scripts/apt-upgrade.sh && /scripts/cleanup.sh && rm -rf /scripts
 
 # Configure global npm install location, use group to adapt to UID/GID changes
 ARG NPM_GLOBAL=/usr/local/share/npm-global
@@ -50,23 +46,18 @@ RUN if ! cat /etc/group | grep -e "^npm:" > /dev/null 2>&1; then groupadd -r npm
     && usermod -a -G npm ${USERNAME} \
     && umask 0002 \
     && mkdir -p ${NPM_GLOBAL} \
-    && chown ${USERNAME}:npm ${NPM_GLOBAL} \
+    && touch /usr/local/etc/npmrc \
+    && chown ${USERNAME}:npm ${NPM_GLOBAL} /usr/local/etc/npmrc \
     && chmod g+s ${NPM_GLOBAL} \
     && npm config -g set prefix ${NPM_GLOBAL} \
-    && sudo -u ${USERNAME} npm config -g set prefix ${NPM_GLOBAL}
+    && su ${USERNAME} -c "npm config -g set prefix ${NPM_GLOBAL}" 
 
-# Install eslint, nodemon and extra modules if required.
-ARG EXTRA_MODULES=""
-RUN su ${USERNAME} -c "umask 0002 && npm install -g nodemon ${EXTRA_MODULES}" \
+# [Optional] Install global extra modules.
+ARG GLOBAL_EXTRA_MODULES=""
+RUN if test -z "$GLOBAL_EXTRA_MODULES" ; \
+    then echo "No extra global modules to install" ; \
+    else su ${USERNAME} -c "umask 0002 && npm install -g ${GLOBAL_EXTRA_MODULES}" ; fi \
     && npm cache clean --force > /dev/null 2>&1
-
-# [Optional] Uncomment if you want to install more global node modules
-# RUN su node -c "npm install -g <your-package-list-here>""
 
 # Change to non-root user.
 USER ${USERNAME}
-
-# Sets the source code dir as working dir.
-# WORKDIR /workspace
-
-# EXPOSE 3000

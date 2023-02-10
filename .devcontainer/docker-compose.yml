@@ -12,13 +12,12 @@ services:
         ADDITIONAL_LOCALES: ${ADDITIONAL_LOCALES}
         LOCALE: ${DFLT_LOCALE}
         TIMEZONE: ${DFLT_TIMEZONE}
+        GLOBAL_EXTRA_MODULES: ${NODEJS_GLOBAL_EXTRA_MODULES}
     hostname: ${NODEJS_HOST}
     environment:
-      - NODE_ENV=${ENVIRONMENT}
-    # - DEV_PORT=${PORT}
-    # - PROD_PORT=3000
+      - NODE_ENV=development
     volumes:
-      - ..:/workspace
+      - ..:/workspace:chached
     restart: unless-stopped
     # Command to stay alive for coding.
     command: sleep infinity
