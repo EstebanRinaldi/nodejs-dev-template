@@ -52,6 +52,9 @@ RUN if ! cat /etc/group | grep -e "^npm:" > /dev/null 2>&1; then groupadd -r npm
     && npm config -g set prefix ${NPM_GLOBAL} \
     && su ${USERNAME} -c "npm config -g set prefix ${NPM_GLOBAL}" 
 
+# Install pnpm
+RUN su ${USERNAME} -c "umask 0002 && npm install -g pnpm" 
+
 # [Optional] Install global extra modules.
 ARG GLOBAL_EXTRA_MODULES=""
 RUN if test -z "$GLOBAL_EXTRA_MODULES" ; \

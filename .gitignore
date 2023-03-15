@@ -21,11 +21,6 @@ pids
 # Dependency directories
 node_modules/
 jspm_packages/
-
-# Yarn Integrity file
-.yarn-integrity
-
-# Yarn
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -33,3 +28,4 @@ jspm_packages/
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+.pnpm-store/
